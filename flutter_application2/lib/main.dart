@@ -43,7 +43,7 @@ class _InicioState extends State<Inicio> {
                       MaterialPageRoute(
                           // MaterialPageRoute = crea una ruta de una pagina de material
                           builder: (context) => Pagina02())),
-                  print('CLIK')
+                  print('Adentro')
                 },
               ),
             ],
