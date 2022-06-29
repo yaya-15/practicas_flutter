@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Prueba 1'),
+          backgroundColor: Colors.green,
         ),
         body: _opciones[_pagActual],
         bottomNavigationBar: BottomNavigationBar(
