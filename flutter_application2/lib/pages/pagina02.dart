@@ -55,7 +55,7 @@ class Pagina02 extends StatelessWidget {
                     Icon(Icons.arrow_forward_ios)
                   ],
                 ),
-                onPressed: () => {Navigator.pop(context)})
+                onPressed: () => {Navigator.pop(context), print('CLAK')})
           ],
         ),
       ),
