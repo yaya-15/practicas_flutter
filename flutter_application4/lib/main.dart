@@ -20,13 +20,13 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
-  //Es para
-  bool _AcepCookies = false;
+  //Es para saber que se muestra en pantalla, en este caso "No acepto las cookies"
+  bool _AcepSuscripcion = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('App 4'),
+        title: Text('Alert Dialog- Practica 4'),
       ),
       body: Center(
         child: Column(
@@ -36,7 +36,7 @@ class _InicioState extends State<Inicio> {
               color: Colors.red,
               textColor: Colors.white,
               child: Text(
-                'Aceptar cookies',
+                _AcepSuscripcion ? "Cancelar suscripcion" : 'Suscribete',
                 style: TextStyle(fontSize: 20),
               ),
               onPressed: () {
@@ -49,7 +49,9 @@ class _InicioState extends State<Inicio> {
             ),
             Text(
               // Es una condicion ternaria
-              _AcepCookies ? "Acepto los cookies" : "No acepto las cookies",
+              _AcepSuscripcion
+                  ? "Acepto la suscripcion"
+                  : "No acepto lasuscripcion",
               style: TextStyle(
                 fontSize: 30,
               ),
@@ -67,29 +69,31 @@ class _InicioState extends State<Inicio> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: Text('COOKIES'),
-        content: Text('¿Estas de acurdo en aceptas los cookies?'),
+        content: Text(_AcepSuscripcion
+            ? "¿Estas seguro de cancelar la suscripcion?"
+            : '¿Estas seguro que quieres suscribirte?'),
         actions: [
           TextButton(
               onPressed: () {
                 print('No');
                 //setState => Hace el cambio de estado de la pantalla o cambia la pantalla
                 setState(() {
-                  _AcepCookies = false;
+                  _AcepSuscripcion = false;
                 });
                 //Navigator.pop() => Es para poder quitar la capa/dialigo y regresar a la de abajo
                 Navigator.pop(context);
               },
-              child: Text('No')),
+              child: Text(_AcepSuscripcion ? "Aceptar" : 'Cancelar')),
           TextButton(
               onPressed: () {
                 print('Si');
                 setState(() {
-                  _AcepCookies = true;
+                  _AcepSuscripcion = true;
                 });
                 //Navigator.pop() => Es para poder quitar la capa/dialigo y regresar a la de abajo
                 Navigator.pop(context);
               },
-              child: Text('Si'))
+              child: Text(_AcepSuscripcion ? "Cancelar" : 'Aceptar'))
         ],
       ),
     );
